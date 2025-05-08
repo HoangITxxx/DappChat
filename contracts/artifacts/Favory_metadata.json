@@ -1,0 +1,161 @@
+{
+	"compiler": {
+		"version": "0.8.30+commit.73712a01"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "inbox",
+						"type": "address"
+					}
+				],
+				"name": "UserRegistered",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "allInboxes",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getAllInboxes",
+				"outputs": [
+					{
+						"internalType": "address[]",
+						"name": "",
+						"type": "address[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					}
+				],
+				"name": "getUserInbox",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "publicKey",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "encryptedPrivateKey",
+						"type": "string"
+					}
+				],
+				"name": "registerUser",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "userToInbox",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/Favory.sol": "Favory"
+		},
+		"evmVersion": "prague",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/Favory.sol": {
+			"keccak256": "0x8638f473f6f30c2cf588d25587261611132c977f70197c597b800ae09bcb993e",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://18543b87dea1cac26af53e8ef2e3b425b782b32ec687028f186492226727d1be",
+				"dweb:/ipfs/QmYEn3QLucSTpa8b7EPpgesG2NgKteVKhn283YYobHUke6"
+			]
+		},
+		"contracts/UserInbox.sol": {
+			"keccak256": "0x0e0cf89908a29a1cdce857f2fa0ea15fd3292d40307b67bd2029e1a5700d1a3c",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://3f272c906f974dce69b129566ea86684c49353db6d5c74ad7a6b9abbf5e1bac4",
+				"dweb:/ipfs/QmNNejnhySoEauDWqtSrxzwykHvmsJq3KrQ6KwZyjvFGz4"
+			]
+		}
+	},
+	"version": 1
+}
