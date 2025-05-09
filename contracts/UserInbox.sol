@@ -8,6 +8,7 @@ contract UserInbox {
 
     struct Message {
         address sender;
+        string senderPublicKey;
         string encryptedContent;
         uint timestamp;
         bool isRead;
@@ -38,9 +39,10 @@ contract UserInbox {
         return messages;
     }
 
-    function sendMessage(string memory _encryptedContent) external {
+    function sendMessage(string memory _encryptedContent, string memory _senderPublicKey) external {
         messages.push(Message({
             sender: msg.sender,
+            senderPublicKey: _senderPublicKey,
             encryptedContent: _encryptedContent,
             timestamp: block.timestamp,
             isRead: false

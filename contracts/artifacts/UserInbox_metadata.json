@@ -77,6 +77,11 @@
 							},
 							{
 								"internalType": "string",
+								"name": "senderPublicKey",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
 								"name": "encryptedContent",
 								"type": "string"
 							},
@@ -144,6 +149,11 @@
 						"internalType": "string",
 						"name": "_encryptedContent",
 						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_senderPublicKey",
+						"type": "string"
 					}
 				],
 				"name": "sendMessage",
@@ -180,11 +190,11 @@
 	},
 	"sources": {
 		"contracts/UserInbox.sol": {
-			"keccak256": "0x0e0cf89908a29a1cdce857f2fa0ea15fd3292d40307b67bd2029e1a5700d1a3c",
+			"keccak256": "0x2f034fb06c2171dd07f0160a96da350b1c4a81bc7f3f73fbb85cfa482b777dd3",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://3f272c906f974dce69b129566ea86684c49353db6d5c74ad7a6b9abbf5e1bac4",
-				"dweb:/ipfs/QmNNejnhySoEauDWqtSrxzwykHvmsJq3KrQ6KwZyjvFGz4"
+				"bzz-raw://d41d73545134e387869f5f79d05e9b624f16c756408004547c7bc63d0da75a75",
+				"dweb:/ipfs/QmQpXQ3Lda7oJmJNrAwGp2Yu2XrEB45ZevhzX4HkjVGw1o"
 			]
 		}
 	},
