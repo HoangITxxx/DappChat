@@ -1,5 +1,7 @@
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 import "./UserInbox.sol";
+import "./Factory.sol";
 
 contract GroupChat {
     address public admin;
@@ -17,14 +19,16 @@ contract GroupChat {
     }
     Member[] public members;
     Message[] private messages;
+    address public factoryAddress;
 
 mapping(address => bool) public isMember;
 
-    constructor(address _admin, string memory _groupPublicKey, string memory _encryptedGroupPrivateKey) {
+    constructor(address _admin, address _factoryAddress, string memory _groupPublicKey, string memory _encryptedGroupPrivateKey, string memory _adminPublicKey) {
         admin = _admin;
+        factoryAddress = _factoryAddress;
         groupPublicKey = _groupPublicKey;
         encryptedGroupPrivateKey = _encryptedGroupPrivateKey;
-        members.push(Member(_admin, ""));
+        members.push(Member(_admin, _adminPublicKey)); 
         isMember[_admin] = true;
     }
 
@@ -40,9 +44,15 @@ mapping(address => bool) public isMember;
 
     function addMember(address _memberAddress, string memory _memberPublicKey) external onlyAdmin {
         require(!isMember[_memberAddress], "Member already exists");
-        members.push(Member(_memberAddress, _memberPublicKey));
+
+        address inbox = Factory(factoryAddress).getUserInbox(_memberAddress);
+        require(inbox != address(0), "User chua dang ky");
+
+        string memory memberPublicKey = UserInbox(inbox).getPublicKey();
+
+        members.push(Member(_memberAddress, memberPublicKey));
         isMember[_memberAddress] = true;
-        emit MemberAdded(_memberAddress, _memberPublicKey);
+        emit MemberAdded(_memberAddress, memberPublicKey);
     }
 
     function getMembers() external view returns (Member[] memory) {

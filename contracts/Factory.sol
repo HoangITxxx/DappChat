@@ -4,7 +4,7 @@ pragma solidity ^0.8.0;
 import "./UserInbox.sol";
 import "./GroupChat.sol";
 
-contract Factori {
+contract Factory {
 
     struct GroupInfo{
         uint groupId;
@@ -18,11 +18,18 @@ contract Factori {
     uint private nextGroupId = 1;
     
     function createGroup(string memory _groupPublicKey, string memory _encryptedGroupPrivateKey) external {
-        GroupChat groupChat = new GroupChat(
-            msg.sender,
-            _groupPublicKey,
-            _encryptedGroupPrivateKey
-        );
+        address inbox = userToInbox[msg.sender];
+    require(inbox != address(0), "Admin chua dang ky");
+
+    string memory adminPublicKey = UserInbox(inbox).getPublicKey();
+
+    GroupChat groupChat = new GroupChat(
+        msg.sender,
+        address(this),
+        _groupPublicKey,
+        _encryptedGroupPrivateKey,
+        adminPublicKey
+    );
         uint groupId = nextGroupId++;
         groups.push(GroupInfo({
             groupId: groupId, 
@@ -34,6 +41,12 @@ contract Factori {
         emit GroupCreated(groupId, address(groupChat), msg.sender);
     }
     event GroupCreated(uint indexed groupId, address indexed groupContract, address admin);
+
+    function getUserPublicKey(address user) external view returns (string memory) {
+        address inbox = userToInbox[user];
+        require(inbox != address(0), "User chua dang ky");
+        return UserInbox(inbox).getPublicKey();
+    }
 
     function getGroups() external view returns (GroupInfo[] memory) {
         return groups;
